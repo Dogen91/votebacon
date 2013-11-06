@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<body>
-<div style="width:100%;font-size:36px;line-height:48px;background-color:navy;color:white">My Facelet Application</div>
-</body>
+	<body>
+		<div id="leftHeader">
+			<h1>Votebacon</h1>
+			<!-- User is logged in -->	
+			<button id="addNewLinkBtn">Submit new link</button>
+		</div>
+		<div id="rightHeader">
+			<!-- User is not Logged in -->
+			<form action="" method="post">
+				<input type="text" name="username" placeholder="Username" />
+				<input type="password" name="password" placeholder="Password" />
+				<input type="submit" value="Login" />
+			</form>
+			<button id="registerBtn">Register</button>
+			
+			<!-- User is logged in -->			
+			<span id="username">Hi Hero</span>
+			<button id="logoutBtn">Logout</button>
+		</div>
+	</body>
 </html>

@@ -1,0 +1,20 @@
+/**
+ * Header
+ */
+#header {
+	height: 50px;
+	background-color: #DDD;
+	padding: 10px;
+}
+
+#header h1, #header form {
+	display: inline;
+}
+
+#leftHeader {
+	float: left;
+}
+
+#rightHeader {
+	float: right;
+}
