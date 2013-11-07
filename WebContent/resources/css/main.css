@@ -1,8 +1,42 @@
 /**
+ * Colors
+ * Blue: #3a68e9
+ */
+
+/**
+ * General
+ */
+button, input[type="submit"] {
+	background-color: #3a68e9;
+	color: #FFF;
+}
+
+a {
+	color: #3a68e9;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a img {
+	border: none;
+}
+
+a:hover img {
+	text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+
+/**
  * Header
  */
 #header {
-	height: 50px;
+	height: 55px;
 	background-color: #DDD;
 	padding: 10px;
 }
@@ -17,4 +51,56 @@
 
 #rightHeader {
 	float: right;
+	margin-top:15px;
 }
+
+/**
+ * Form
+ */
+form .formRow {
+	margin: 3px 0px;
+}
+
+form .formRow label {
+	display: inline-block;
+	width: 100px;
+	text-align: right;
+	margin-right: 3px;
+}
+
+/**
+ * Link overview
+ */
+#addNewLink {
+	background-color:#EEE;
+	padding: 10px; 
+}
+
+#addNewLink h2 {
+	margin-top: 0px;
+}
+
+.link {
+	clear: both;
+	border-top: 1px solid #AAA;
+	padding: 10px;
+}
+
+.link h2 {
+	margin: 0px 0px 5px 0px;
+}
+
+.link .votes {
+	float: left;
+	width: 50px;
+	margin-top: 20px;
+}
+
+.link .linkInfo {
+	float: left;
+}
+
+.link .votes span, .link .votes a {
+	display: inline-block;
+}
+ 

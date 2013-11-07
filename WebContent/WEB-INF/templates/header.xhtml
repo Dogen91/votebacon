@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
 	<body>
 		<div id="leftHeader">
 			<h1>Votebacon</h1>
@@ -9,11 +10,13 @@
 		</div>
 		<div id="rightHeader">
 			<!-- User is not Logged in -->
-			<form action="" method="post">
-				<input type="text" name="username" placeholder="Username" />
-				<input type="password" name="password" placeholder="Password" />
-				<input type="submit" value="Login" />
-			</form>
+			<h:form>
+				<h:outputLabel for="username">Username</h:outputLabel>
+				<h:inputText id="username" value=""></h:inputText>
+				<h:outputLabel for="password">Password</h:outputLabel>
+				<h:inputSecret id="passowrd" value=""></h:inputSecret>
+				<h:commandButton value="Login" />
+			</h:form>
 			<button id="registerBtn">Register</button>
 			
 			<!-- User is logged in -->			

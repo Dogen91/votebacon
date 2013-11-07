@@ -8,7 +8,55 @@
 
 	<ui:composition template="/WEB-INF/templates/basic.xhtml">
 		<ui:define name="content">
-		    Add your content here or delete to use the default
+			<!-- TODO display after click on new link button -->
+			<div id="addNewLink">
+				<h2>Submit a new Link</h2>
+				<h:form>
+					<div class="formRow">
+						<h:outputLabel for="title">Title</h:outputLabel><h:inputText id="title" value="" />
+					</div>
+					<div class="formRow">
+						<h:outputLabel for="url">URL</h:outputLabel><h:inputText id="url" value="" />
+					</div>
+					<div class="formRow">
+						<label> </label>
+						<h:commandButton value="Submit new link"/>
+					</div>
+				</h:form>
+			</div>
+			<!-- TODO display links dynamic -->
+			<div id="links">
+				<div class="link">
+					<div class="votes">
+						<h:outputLink>vote up</h:outputLink>
+						<span><h:outputText value="333"/></span>
+						<h:outputLink>vote down</h:outputLink>
+					</div>
+					<div class="linkInfo">
+						<h:outputLink value="#">
+							<h2>You are Bad at Entropy</h2>
+						</h:outputLink>
+						<p>submitted 7 hours ago by dogen.</p>
+						<h:outputLink value="#">1 Comment</h:outputLink>
+					</div>
+					<div class="clear" />
+				</div>	
+				<div class="link">
+					<div class="votes">
+						<h:outputLink>vote up</h:outputLink>
+						<span><h:outputText value="333"/></span>
+						<h:outputLink>vote down</h:outputLink>
+					</div>
+					<div class="linkInfo">
+						<h:outputLink value="#">
+							<h2>You are Bad at Entropy</h2>
+						</h:outputLink>
+						<p>submitted 7 hours ago by dogen.</p>
+						<h:outputLink value="#">2 Comments</h:outputLink>
+					</div>
+					<div class="clear" />
+				</div>	
+			</div>
 		</ui:define>
 	</ui:composition>
 </html>
