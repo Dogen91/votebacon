@@ -4,7 +4,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<ui:composition template="/WEB-INF/templates/basic.xhtml">
 		<ui:define name="content">
@@ -33,49 +35,36 @@
 				<h2>Submit a new Link</h2>
 				<h:form>
 					<div class="formRow">
-						<h:outputLabel for="title">Title</h:outputLabel><h:inputText id="title" value="" />
+						<h:outputLabel for="title">Title</h:outputLabel><h:inputText id="title" value="#{link.title}" />
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="url">URL</h:outputLabel><h:inputText id="url" value="" />
+						<h:outputLabel for="url">URL</h:outputLabel><h:inputText id="url" value="#{link.url}" />
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton value="Submit new link"/>
+						<h:commandButton value="Submit new link" action="#{votebacon.addNewLink(link)}" />
 					</div>
 				</h:form>
 			</div>
 			<!-- TODO display links dynamic -->
 			<div id="links">
-				<div class="link">
-					<div class="votes">
-						<h:outputLink>vote up</h:outputLink>
-						<span><h:outputText value="333"/></span>
-						<h:outputLink>vote down</h:outputLink>
-					</div>
-					<div class="linkInfo">
-						<h:outputLink value="#">
-							<h2>You are Bad at Entropy</h2>
-						</h:outputLink>
-						<p>submitted 7 hours ago by dogen.</p>
-						<h:outputLink value="#">1 Comment</h:outputLink>
-					</div>
-					<div class="clear" />
-				</div>	
-				<div class="link">
-					<div class="votes">
-						<h:outputLink>vote up</h:outputLink>
-						<span><h:outputText value="333"/></span>
-						<h:outputLink>vote down</h:outputLink>
-					</div>
-					<div class="linkInfo">
-						<h:outputLink value="#">
-							<h2>You are Bad at Entropy</h2>
-						</h:outputLink>
-						<p>submitted 7 hours ago by dogen.</p>
-						<h:outputLink value="#">2 Comments</h:outputLink>
-					</div>
-					<div class="clear" />
-				</div>	
+				<ui:repeat var="linkItem" value="#{votebacon.links}" varStatus="status" >
+					<div class="link">
+						<div class="votes">
+							<h:outputLink>vote up</h:outputLink>
+							<span><h:outputText value="#{linkItem.vote}"/></span>
+							<h:outputLink>vote down</h:outputLink>
+						</div>
+						<div class="linkInfo">
+							<h:outputLink value="#{linkItem.url}" target="_blank">
+								<h2>#{linkItem.title}</h2>
+							</h:outputLink>
+							<p><h:outputText value="#{linkItem.infoText}" /></p>
+							<h:outputLink value="detail/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
+						</div>
+						<div class="clear" />
+					</div>	
+				</ui:repeat>
 			</div>
 		</ui:define>
 	</ui:composition>
