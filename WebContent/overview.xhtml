@@ -8,8 +8,28 @@
 
 	<ui:composition template="/WEB-INF/templates/basic.xhtml">
 		<ui:define name="content">
+			<!-- TODO display after click on register -->
+			<div id="register" class="dropdownContainer">
+				<h2>Create a new User-Account</h2>
+				<h:form>
+					<div class="formRow">
+						<h:outputLabel for="username">Username</h:outputLabel><h:inputText id="username" value="" />
+					</div>
+					<div class="formRow">
+						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" value="" />
+					</div>
+					<div class="formRow">
+						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" value="" />
+					</div>
+					<div class="formRow">
+						<label> </label>
+						<h:commandButton value="Register"/>
+					</div>
+				</h:form>
+			</div>
+		
 			<!-- TODO display after click on new link button -->
-			<div id="addNewLink">
+			<div id="addNewLink" class="dropdownContainer">
 				<h2>Submit a new Link</h2>
 				<h:form>
 					<div class="formRow">

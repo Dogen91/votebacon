@@ -32,6 +32,16 @@ a:hover img {
 	clear: both;
 }
 
+.dropdownContainer {
+	background-color:#EEE;
+	padding: 10px; 
+	border-bottom: 1px solid #AAA;
+}
+
+.dropdownContainer h2 {
+	margin-top: 0px;
+}
+
 /**
  * Header
  */
@@ -63,7 +73,7 @@ form .formRow {
 
 form .formRow label {
 	display: inline-block;
-	width: 100px;
+	width: 125px;
 	text-align: right;
 	margin-right: 3px;
 }
@@ -71,18 +81,9 @@ form .formRow label {
 /**
  * Link overview
  */
-#addNewLink {
-	background-color:#EEE;
-	padding: 10px; 
-}
-
-#addNewLink h2 {
-	margin-top: 0px;
-}
-
 .link {
 	clear: both;
-	border-top: 1px solid #AAA;
+	border-bottom: 1px solid #AAA;
 	padding: 10px;
 }
 
