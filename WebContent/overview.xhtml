@@ -42,7 +42,7 @@
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton value="Submit new link" action="#{votebacon.addNewLink(link)}">
+						<h:commandButton class="submitBtn" value="Submit new link" action="#{votebacon.addNewLink(link)}">
 							<f:ajax execute="@form" render=":linkGroup"/>
 						</h:commandButton>
 					</div>
@@ -56,11 +56,11 @@
 								<h:form>
 									<f:ajax render="vote">
 										<h:commandLink action="#{votebacon.voteUp(status.index)}" >
-											<h:graphicImage name="img/arrow_up.png" alt="Vote Up" width="40"/>
+											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
 										<span><h:outputText value="#{linkItem.vote}" id="vote"/></span>
 										<h:commandLink action="#{votebacon.voteDown(status.index)}">
-											<h:graphicImage name="img/arrow_down.png" alt="Vote Down" width="40"/>
+											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>
 									</f:ajax>
 								</h:form>

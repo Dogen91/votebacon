@@ -36,6 +36,9 @@ a:hover img {
 	background-color:#EEE;
 	padding: 10px; 
 	border-bottom: 1px solid #AAA;
+	position: absolute;
+	width: 100%;
+	display: none;
 }
 
 .dropdownContainer h2 {
