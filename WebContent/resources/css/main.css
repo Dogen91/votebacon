@@ -94,7 +94,7 @@ form .formRow label {
 .link .votes {
 	float: left;
 	width: 50px;
-	margin-top: 20px;
+	margin-top: 10px;
 }
 
 .link .linkInfo {
@@ -102,6 +102,7 @@ form .formRow label {
 }
 
 .link .votes span, .link .votes a {
-	display: inline-block;
+	display: block;
+	text-align:center;
 }
  

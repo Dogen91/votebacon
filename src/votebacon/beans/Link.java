@@ -31,6 +31,16 @@ public class Link {
 			return "submitted " + (agoInMillis / 1000 / 60 / 60 / 24) +  " days ago by user dogen";
 		}
 	}
+	
+	public Integer voteUp(){
+		this.vote++;
+		return this.vote;
+	}
+	
+	public Integer voteDown(){
+		this.vote--;
+		return this.vote;
+	}
 
 	public String getTitle() {
 		return title;

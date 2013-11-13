@@ -17,6 +17,28 @@ public class Votebacon {
 		this.links.add(link);
 	}
 	
+	public Integer voteUp(int id){
+		if(this.links.size() > id){
+			Link link = this.links.get(id);
+			link.setVote(link.getVote() + 1);
+			return link.getVote();
+		}else {
+			// TODO pforster: create exception
+			return null;
+		}
+	}
+	
+	public Integer voteDown(int id){
+		if(this.links.size() > id){
+			Link link = this.links.get(id);
+			link.setVote(link.getVote() - 1);
+			return link.getVote();
+		}else {
+			// TODO pforster: create exception
+			return null;
+		}
+	}
+	
 	public List<Link> getLinks() {
 		return links;
 	}

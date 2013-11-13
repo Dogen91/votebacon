@@ -42,29 +42,40 @@
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton value="Submit new link" action="#{votebacon.addNewLink(link)}" />
+						<h:commandButton value="Submit new link" action="#{votebacon.addNewLink(link)}">
+							<f:ajax execute="@form" render=":linkGroup"/>
+						</h:commandButton>
 					</div>
 				</h:form>
 			</div>
-			<!-- TODO display links dynamic -->
 			<div id="links">
-				<ui:repeat var="linkItem" value="#{votebacon.links}" varStatus="status" >
-					<div class="link">
-						<div class="votes">
-							<h:outputLink>vote up</h:outputLink>
-							<span><h:outputText value="#{linkItem.vote}"/></span>
-							<h:outputLink>vote down</h:outputLink>
-						</div>
-						<div class="linkInfo">
-							<h:outputLink value="#{linkItem.url}" target="_blank">
-								<h2>#{linkItem.title}</h2>
-							</h:outputLink>
-							<p><h:outputText value="#{linkItem.infoText}" /></p>
-							<h:outputLink value="detail/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
-						</div>
-						<div class="clear" />
-					</div>	
-				</ui:repeat>
+				<h:panelGroup id="linkGroup">
+					<ui:repeat var="linkItem" value="#{votebacon.links}" varStatus="status" >
+						<div class="link">
+							<div class="votes">
+								<h:form>
+									<f:ajax render="vote">
+										<h:commandLink action="#{votebacon.voteUp(status.index)}" >
+											<h:graphicImage name="img/arrow_up.png" alt="Vote Up" width="40"/>
+										</h:commandLink>
+										<span><h:outputText value="#{linkItem.vote}" id="vote"/></span>
+										<h:commandLink action="#{votebacon.voteDown(status.index)}">
+											<h:graphicImage name="img/arrow_down.png" alt="Vote Down" width="40"/>
+										</h:commandLink>
+									</f:ajax>
+								</h:form>
+							</div>
+							<div class="linkInfo">
+								<h:outputLink value="#{linkItem.url}" target="_blank">
+									<h2>#{linkItem.title}</h2>
+								</h:outputLink>
+								<p><h:outputText value="#{linkItem.infoText}" /></p>
+								<h:outputLink value="detail/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
+							</div>
+							<div class="clear" />
+						</div>	
+					</ui:repeat>
+				</h:panelGroup>
 			</div>
 		</ui:define>
 	</ui:composition>
