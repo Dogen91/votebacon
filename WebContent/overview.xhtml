@@ -10,7 +10,6 @@
 
 	<ui:composition template="/WEB-INF/templates/basic.xhtml">
 		<ui:define name="content">
-			<!-- TODO display after click on register -->
 			<div id="register" class="dropdownContainer">
 				<h2>Create a new User-Account</h2>
 				<h:form>
@@ -30,7 +29,6 @@
 				</h:form>
 			</div>
 		
-			<!-- TODO display after click on new link button -->
 			<div id="addNewLink" class="dropdownContainer">
 				<h2>Submit a new Link</h2>
 				<h:form>
@@ -70,7 +68,7 @@
 									<h2>#{linkItem.title}</h2>
 								</h:outputLink>
 								<p><h:outputText value="#{linkItem.infoText}" /></p>
-								<h:outputLink value="detail/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
+								<h:outputLink value="Link/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
 							</div>
 							<div class="clear" />
 						</div>	
