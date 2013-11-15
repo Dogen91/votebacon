@@ -6,6 +6,9 @@
 /**
  * General
  */
+* {
+font-family: Arial;
+}
 body {
 	margin: 0;
 	padding: 0;
@@ -84,6 +87,12 @@ a:hover img {
 	border: 1px solid #AAA;
 	position: absolute;
 	bottom: 10px;
+}
+
+.subtitle {
+	float: right;
+	position: absolute;
+	margin: 0;
 }
 
 /**

@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
+import votebacon.beans.AuthenticationHandler;
 import votebacon.beans.Link;
 
 @ManagedBean
@@ -13,8 +14,10 @@ import votebacon.beans.Link;
 public class Votebacon {
 	private List<Link> links = new ArrayList<Link>();
 
-	public void addNewLink(Link link){
+	public void addNewLink(Link link, String username){
+		link.setUsername(username);
 		this.links.add(link);
+		// TODO: user has to be forwarded to the detail view of the new link.
 	}
 	
 	public Integer voteUp(int id){

@@ -12,9 +12,10 @@
 		<ui:define name="content">
 			<div id="register" class="dropdownContainer">
 				<h2>Create a new User-Account</h2>
-				<h:form>
+				<h:form id="registerForm">
 					<div class="formRow">
 						<h:outputLabel for="username">Username</h:outputLabel><h:inputText id="username" value="#{user.name}" />
+						<!-- <h:message class="error" for="username" id="userAlreadyExistsError" /> -->
 					</div>
 					<div class="formRow">
 						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" value="#{user.password}" />
@@ -40,7 +41,7 @@
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton class="submitBtn" value="Submit" action="#{votebacon.addNewLink(link)}">
+						<h:commandButton class="submitBtn" value="Submit" action="#{votebacon.addNewLink( link, authenticationHandler.currentUser.name )}">
 							<f:ajax execute="@form" render=":linkGroup"/>
 						</h:commandButton>
 					</div>
@@ -72,7 +73,7 @@
 								<h:outputLink value="Link/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
 							</div>
 							<div class="clear" />
-						</div>	
+						</div>
 					</ui:repeat>
 				</h:panelGroup>
 			</div>
