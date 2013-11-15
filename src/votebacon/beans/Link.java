@@ -32,16 +32,6 @@ public class Link {
 		}
 	}
 	
-	public Integer voteUp(){
-		this.vote++;
-		return this.vote;
-	}
-	
-	public Integer voteDown(){
-		this.vote--;
-		return this.vote;
-	}
-
 	public String getTitle() {
 		return title;
 	}

@@ -14,17 +14,17 @@
 				<h2>Create a new User-Account</h2>
 				<h:form>
 					<div class="formRow">
-						<h:outputLabel for="username">Username</h:outputLabel><h:inputText id="username" value="" />
+						<h:outputLabel for="username">Username</h:outputLabel><h:inputText id="username" value="#{user.name}" />
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" value="" />
+						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" value="#{user.password}" />
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" value="" />
+						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" value="#{user.confirmPassword}" />
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton value="Register"/>
+						<h:commandButton value="Register" action="#{authenticationHandler.register(user)}" />
 					</div>
 				</h:form>
 			</div>
