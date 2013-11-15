@@ -40,10 +40,11 @@
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton class="submitBtn" value="Submit new link" action="#{votebacon.addNewLink(link)}">
+						<h:commandButton class="submitBtn" value="Submit" action="#{votebacon.addNewLink(link)}">
 							<f:ajax execute="@form" render=":linkGroup"/>
 						</h:commandButton>
 					</div>
+					<div id="cancelSubmit">&#9587;</div>
 				</h:form>
 			</div>
 			<div id="links">

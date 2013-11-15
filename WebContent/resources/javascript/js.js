@@ -12,11 +12,19 @@ $( document ).ready(function() {
 		$("#register").show();
 	} );
 	
-	$( "#addNewLink input[type=text]" ).keyup(function() {
+	// This function checks if all fields are filled before enabling the sumit-Button.
+	$( "#addNewLink input[type=text]" ).keyup( function() {
 		if( fieldsAreFilled() ) {
 			$("#addNewLink input.submitBtn").removeAttr('disabled').removeClass( 'ui-state-disabled' );
 		}
 	});
+	
+	// After showing the link-submit-area, the user can hide/close that area again by clicking on this button.
+	// This will also show the "submit new link" button in the header again.
+	$("#cancelSubmit").click( function() {
+		hideAddLinkArea();
+	} );
+	
 	
 	$("#addNewLink input.submitBtn").click( function() {
 		$("#addNewLink input[type=text]").val("");
@@ -25,9 +33,11 @@ $( document ).ready(function() {
 	
 	function hideAddLinkArea() {
 		$("#addNewLink").hide();
+		$("#addNewLinkBtn").show();
 	}
 	function showAddLinkArea() {
 		$("#addNewLink").show();
+		$("#addNewLinkBtn").hide();
 	}
 	function fieldsAreFilled() {
 		// TODO: check if all fields are filled.

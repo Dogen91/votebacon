@@ -6,6 +6,10 @@
 /**
  * General
  */
+body {
+	margin: 0;
+	padding: 0;
+}
 button, input[type="submit"] {
 	background-color: #3a68e9;
 	color: #FFF;
@@ -33,11 +37,10 @@ a:hover img {
 }
 
 .dropdownContainer {
-	background-color:#EEE;
-	padding: 10px; 
+	background-color: #EEE;
+	padding: 10px;
 	border-bottom: 1px solid #AAA;
-	position: absolute;
-	width: 100%;
+	position: relative;
 	display: none;
 }
 
@@ -65,6 +68,22 @@ a:hover img {
 #rightHeader {
 	float: right;
 	margin-top:15px;
+}
+
+#cancelSubmit {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	cursor: hand;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #DDD;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #AAA;
+	position: absolute;
+	bottom: 10px;
 }
 
 /**

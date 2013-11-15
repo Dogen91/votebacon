@@ -21,10 +21,10 @@
 						<h:inputSecret id="password" value="#{user.password}"></h:inputSecret>
 						<h:commandButton value="Login" action="#{authenticationHandler.login(user)}" />
 					</h:form>	
-					<button id="registerBtn">Register</button>
+					or <button id="registerBtn">Register</button>
 				</c:when>
 				<c:otherwise>
-					<span id="username">Hi <h:outputText value="#{authenticationHandler.currentUser.name}" /></span>
+					<span id="username">Hi, <h:outputText value="#{authenticationHandler.currentUser.name}" />!</span>
 					<h:form>
 						<h:commandButton id="logoutBtn" value="Logout" action="#{authenticationHandler.logout()}" />
 					</h:form>
