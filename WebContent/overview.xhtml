@@ -71,6 +71,10 @@
 									<h2>#{linkItem.title}</h2>
 								</h:outputLink>
 								<p><h:outputText value="#{linkItem.infoText}" /></p>
+								<h:outputLink value="detail.xhtml">
+									<h:outputText value="#{fn:length(linkItem.comments)} Comments" />
+									<f:param name="id" value="#{status.index}" />
+								</h:outputLink>
 								<h:outputLink value="Link/#{status.index}">#{fn:length(linkItem.comments)} Comments</h:outputLink>
 							</div>
 							<div class="clear" />
