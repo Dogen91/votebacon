@@ -18,6 +18,10 @@ button, input[type="submit"] {
 	color: #FFF;
 }
 
+input[type="submit"].ui-state-disabled {
+	background-color: #C4C7CF;
+}
+
 #addNewLink .submitBtn:disabled {
 	background-color: #C4C7CF;
 }

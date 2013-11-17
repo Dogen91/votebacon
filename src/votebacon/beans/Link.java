@@ -11,10 +11,11 @@ public class Link {
 	private String title;
 	private String username;
 	private String url;
+	
+	private int votes = 0;
+	private int posVotes = 0;
 
 	private Calendar created = Calendar.getInstance();
-
-	private int vote;
 
 	private List<Comment> comments = new ArrayList<Comment>();
 	
@@ -38,6 +39,20 @@ public class Link {
 	public void addComment( Comment newComment, String username) {
 		newComment.setAuthor( username );
 		this.comments.add( newComment );
+	}
+	
+	// returns the "real score"
+	public int getScore() {
+		if ( this.getVotes() == 0 ) {
+			return 0;
+		} else {
+			return this.getPosVotes() / this.getVotes();
+		}
+	}
+	
+	// returns a simple positive-negative votes number
+	public int getEffectiveVotes() {
+		return this.getPosVotes() - ( this.getVotes() - this.getPosVotes() );
 	}
 	
 	public String getTitle() {
@@ -64,14 +79,6 @@ public class Link {
 		this.created = created;
 	}
 
-	public int getVote() {
-		return vote;
-	}
-
-	public void setVote(int vote) {
-		this.vote = vote;
-	}
-
 	public List<Comment> getComments() {
 		return comments;
 	}
@@ -80,13 +87,28 @@ public class Link {
 		this.comments = comments;
 	}
 
-
 	public String getUsername() {
 		return username;
 	}
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public int getPosVotes() {
+		return posVotes;
+	}
+
+	public void setPosVotes(int posVotes) {
+		this.posVotes = posVotes;
+	}
+
+	public int getVotes() {
+		return votes;
+	}
+
+	public void setVotes(int votes) {
+		this.votes = votes;
 	}
 
 }

@@ -171,12 +171,20 @@
 		.comment {
 			margin-left: 30px;
 			border-bottom: 1px solid #DDD;
+			min-height: 41px;
 		}
 		.comment form {
 			float: left;
 			margin-right: 10px;
 			clear: left;
 			padding-top: 5px;
+		}
+		#commentForm {
+			padding: 10px 0 10px 0;
+			margin: 0px 0px 10px 0px;
+		}
+		#commentForm textarea {
+			vertical-align: top;
 		}
 		.comment .commentInfo,
 		.comment .commentContent {
@@ -194,6 +202,9 @@
 			height: 18px;
 			margin-left: 5px;
 		}
+		.submitComment.ui-state-disabled {
+			background-color: #C4C7CF;
+		}
 	</style>
 </head>
 <body>
@@ -202,9 +213,7 @@
 	    	<ui:include src="WEB-INF/templates/header.xhtml"/>
 	    </ui:insert>
 	</div>
-	<!-- link details here (title, url, score, author -->
-	<!-- form for new comment here -->
-	<!-- all comments here -->
+	
 	<f:metadata>
 	    <f:viewParam name="id" />
 	</f:metadata>
@@ -216,7 +225,7 @@
 					<h:commandLink action="#{votebacon.voteUp(status.index)}" >
 						<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 					</h:commandLink>
-					<span><h:outputText value="#{link.vote}" id="vote"/></span>
+					<span><h:outputText value="#{link.effectiveVotes}" id="vote"/></span>
 					<h:commandLink action="#{votebacon.voteDown(status.index)}">
 						<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 					</h:commandLink>
@@ -235,13 +244,13 @@
 	
 	<h2><h:outputText value="#{fn:length(link.comments)} Comments:" /></h2>
 	<div id="commentFormContainer">
-	<h:form id="commentForm">
+	<h:form id="commentForm" rendered="#{authenticationHandler.currentUser!=null}" >
 		<div class="formRow">
-			<h:outputLabel for="commentText">Comment:</h:outputLabel><h:inputText id="commentText" value="#{comment.content}" />
+			<h:outputLabel for="commentText">Comment:</h:outputLabel><h:inputTextarea cols="50" rows="7" id="commentText" value="#{comment.content}" />
 		</div>
 		<div class="formRow">
 			<label> </label>
-			<h:commandButton value="Post Comment" action="#{link.addComment( comment, authenticationHandler.currentUser.name )}" />
+			<h:commandButton value="Post Comment" class="submitComment" action="#{link.addComment( comment, authenticationHandler.currentUser.name )}" />
 		</div>
 	</h:form>
 	</div>

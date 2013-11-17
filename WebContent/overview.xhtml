@@ -18,14 +18,14 @@
 						<!-- <h:message class="error" for="username" id="userAlreadyExistsError" /> -->
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" value="#{user.password}" />
+						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" class="password" value="#{user.password}" />
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" value="#{user.confirmPassword}" />
+						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" class="confirmPassword" value="#{user.confirmPassword}" />
 					</div>
 					<div class="formRow">
 						<label> </label>
-						<h:commandButton value="Register" action="#{authenticationHandler.register(user)}" />
+						<h:commandButton value="Register" id="submitRegistration" class="submitRegistration" action="#{authenticationHandler.register(user)}" />
 					</div>
 					<div id="cancelRegister">&#9587;</div>
 				</h:form>
@@ -59,7 +59,7 @@
 										<h:commandLink action="#{votebacon.voteUp(status.index)}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
-										<span><h:outputText value="#{linkItem.vote}" id="vote"/></span>
+										<span><h:outputText value="#{linkItem.effectiveVotes}" id="vote"/></span>
 										<h:commandLink action="#{votebacon.voteDown(status.index)}">
 											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>

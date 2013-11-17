@@ -18,14 +18,6 @@ public class Votebacon {
 	public void addNewLink(Link link, String username){
 		link.setUsername(username);
 		
-		// DEBUG: TODO: REMOVE THIS.
-		Comment commentDefault = new Comment();
-		commentDefault.setContent("TEST TEST TEST");
-		Comment commentDefault2 = new Comment();
-		commentDefault2.setContent("so brave, so doge");
-		link.addComment(commentDefault, username);
-		link.addComment(commentDefault2, username);
-		
 		this.links.add(link);
 		// TODO: user has to be forwarded to the detail view of the new link.
 	}
@@ -33,8 +25,11 @@ public class Votebacon {
 	public Integer voteUp(int id){
 		if(this.links.size() >= id){
 			Link link = this.links.get(id);
-			link.setVote(link.getVote() + 1);
-			return link.getVote();
+			
+			link.setVotes( link.getVotes() + 1 );
+			link.setPosVotes( link.getPosVotes() + 1 );
+			
+			return link.getEffectiveVotes();
 		}else {
 			// TODO pforster: create exception
 			return null;
@@ -44,8 +39,10 @@ public class Votebacon {
 	public Integer voteDown(int id){
 		if(this.links.size() >= id){
 			Link link = this.links.get(id);
-			link.setVote(link.getVote() - 1);
-			return link.getVote();
+			
+			link.setVotes( link.getVotes() + 1 );
+			
+			return link.getEffectiveVotes();
 		}else {
 			// TODO pforster: create exception
 			return null;
