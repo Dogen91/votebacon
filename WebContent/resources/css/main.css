@@ -18,6 +18,10 @@ button, input[type="submit"] {
 	color: #FFF;
 }
 
+#addNewLink .submitBtn:disabled {
+	background-color: #C4C7CF;
+}
+
 a {
 	color: #3a68e9;
 	text-decoration: none;
@@ -73,7 +77,8 @@ a:hover img {
 	margin-top:15px;
 }
 
-#cancelSubmit {
+#cancelSubmit,
+#cancelRegister {
 	width: 30px;
 	height: 30px;
 	cursor: pointer;
