@@ -35,6 +35,11 @@ public class Link {
 		return returnString + " ago by " + this.getUsername();
 	}
 	
+	public void addComment( Comment newComment, String username) {
+		newComment.setAuthor( username );
+		this.comments.add( newComment );
+	}
+	
 	public String getTitle() {
 		return title;
 	}

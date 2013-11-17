@@ -1,16 +1,34 @@
 package votebacon.beans;
 
-import java.util.Date;
+import java.util.Calendar;
+
+import javax.faces.bean.ManagedBean;
  
+@ManagedBean
 public class Comment {
-	private Date date;
 	private String author;
 	private String content;
+	private int vote = 0;
 	
-	public Comment() {
-		this.date = new Date();
-	}
+	private Calendar created = Calendar.getInstance();
 
+	public String getInfoText() {
+		String returnString = this.getAuthor() + " wrote ";
+		Calendar currentCal = Calendar.getInstance();
+		long currentTimeInMillis = currentCal.getTimeInMillis();
+		long createdTimeInMillis = created.getTimeInMillis();
+		long agoInMillis = currentTimeInMillis - createdTimeInMillis;
+		
+		if(agoInMillis < 1000 * 60 * 60){
+			returnString += (agoInMillis / 1000 / 60) +  " minutes";
+		}else if(agoInMillis < 1000 * 60 * 60 * 24){
+			returnString += (agoInMillis / 1000 / 60 / 60) +  " hours";
+		}else {
+			returnString += (agoInMillis / 1000 / 60 / 60 / 24) +  " days";
+		}
+		return returnString + " ago:";
+	}
+	
 	public String getContent() {
 		return content;
 	}
@@ -27,11 +45,19 @@ public class Comment {
 		this.author = author;
 	}
 
-	public Date getDate() {
-		return date;
+	public Calendar getCreated() {
+		return created;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setCreated(Calendar created) {
+		this.created = created;
+	}
+	
+	public int getVote() {
+		return vote;
+	}
+
+	public void setVote(int vote) {
+		this.vote = vote;
 	}
 }
