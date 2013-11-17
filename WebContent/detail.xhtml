@@ -168,6 +168,32 @@
 			width: 100%;
 			background-color: grey;
 		}
+		.comment {
+			margin-left: 30px;
+			border-bottom: 1px solid #DDD;
+		}
+		.comment form {
+			float: left;
+			margin-right: 10px;
+			clear: left;
+			padding-top: 5px;
+		}
+		.comment .commentInfo,
+		.comment .commentContent {
+			margin: 0;
+		}
+		.comment .commentInfo {
+			font-size: 12px;
+		}
+		.comment .commentContent {
+			font-size: 14px;
+			padding: 5px;
+		}
+		.comment img {
+			width: 20px;
+			height: 18px;
+			margin-left: 5px;
+		}
 	</style>
 </head>
 <body>
@@ -233,8 +259,8 @@
 						</h:commandLink>
 					</f:ajax>
 				</h:form>
-				<p><h:outputText value="#{linkComment.infoText}" /></p>
-				<p><h:outputText value="#{linkComment.content}" /></p>
+				<p class="commentInfo"><h:outputText value="#{linkComment.infoText}" /></p>
+				<p class="commentContent"><h:outputText value="#{linkComment.content}" /></p>
 			</div>
 		</ui:repeat>
 	</h:panelGroup>
