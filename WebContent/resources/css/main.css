@@ -1,0 +1,193 @@
+/**
+ * Colors
+ * Blue: #3a68e9
+ */
+
+/**
+ * General
+ */
+* {
+font-family: Arial;
+}
+body {
+	margin: 0;
+	padding: 0;
+}
+button, input[type="submit"] {
+	background-color: #3a68e9;
+	color: #FFF;
+}
+
+input[type="submit"].ui-state-disabled {
+	background-color: #C4C7CF;
+}
+
+#addNewLink .submitBtn:disabled {
+	background-color: #C4C7CF;
+}
+
+a {
+	color: #3a68e9;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a img {
+	border: none;
+}
+
+a:hover img {
+	text-decoration: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.dropdownContainer {
+	background-color: #EEE;
+	padding: 10px;
+	border-bottom: 1px solid #AAA;
+	position: relative;
+	display: none;
+}
+
+.dropdownContainer h2 {
+	margin-top: 0px;
+}
+
+/**
+ * Header
+ */
+#header {
+	height: 55px;
+	background-color: #DDD;
+	padding: 10px;
+}
+
+#header h1, #header form {
+	display: inline;
+}
+
+#leftHeader {
+	float: left;
+}
+
+#rightHeader {
+	float: right;
+	margin-top:15px;
+}
+
+#cancelSubmit,
+#cancelRegister {
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	cursor: hand;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	background-color: #DDD;
+	text-align: center;
+	line-height: 30px;
+	border: 1px solid #AAA;
+	position: absolute;
+	bottom: 10px;
+}
+
+.subtitle {
+	float: right;
+	position: absolute;
+	margin: 0;
+}
+
+/**
+ * Form
+ */
+form .formRow {
+	margin: 3px 0px;
+}
+
+form .formRow label {
+	display: inline-block;
+	width: 125px;
+	text-align: right;
+	margin-right: 3px;
+}
+
+/**
+ * Link overview
+ */
+.link {
+	clear: both;
+	border-bottom: 1px solid #AAA;
+	padding: 10px;
+}
+
+.link h2 {
+	margin: 0px 0px 5px 0px;
+}
+
+.link .votes {
+	float: left;
+	width: 50px;
+	margin-top: 10px;
+}
+
+.link .linkInfo {
+	float: left;
+}
+
+.link .votes span, .link .votes a {
+	display: block;
+	text-align:center;
+}
+ 
+/* Detail.xhtml */
+#addNewLinkBtn {
+	//display: none;
+}
+#commentFormContainer {
+	width: 100%;
+	background-color: grey;
+}
+.comment {
+	margin-left: 30px;
+	border-bottom: 1px solid #DDD;
+	min-height: 41px;
+}
+.comment form {
+	float: left;
+	margin-right: 10px;
+	clear: left;
+	padding-top: 5px;
+}
+#commentForm {
+	padding: 10px 0 10px 0;
+	margin: 0px 0px 10px 0px;
+}
+#commentForm textarea {
+	vertical-align: top;
+}
+.comment .commentInfo,
+.comment .commentContent {
+	margin: 0;
+}
+.comment .commentInfo {
+	font-size: 12px;
+}
+.comment .commentContent {
+	font-size: 14px;
+	padding: 5px;
+}
+.comment img {
+	width: 20px;
+	height: 18px;
+	margin-left: 5px;
+}
+.submitComment.ui-state-disabled {
+	background-color: #C4C7CF;
+}

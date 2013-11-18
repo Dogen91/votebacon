@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+	<body>
+		<div id="leftHeader">
+			<h1>Votebacon</h1>
+			<p class="subtitle">...where voting for bacon is normal.</p>
+			<c:if test="#{not empty authenticationHandler.currentUser}">
+				<button id="addNewLinkBtn">Submit new link</button>
+			</c:if>
+		</div>
+		<div id="rightHeader">
+			<c:choose>
+				<c:when test="#{empty authenticationHandler.currentUser}">
+					<h:form>
+						<h:outputLabel for="username">Username</h:outputLabel>
+						<h:inputText id="username" value="#{user.name}"></h:inputText>
+						<h:outputLabel for="password">Password</h:outputLabel>
+						<h:inputSecret id="password" value="#{user.password}"></h:inputSecret>
+						<h:commandButton value="Login" action="#{authenticationHandler.login(user)}" />
+					</h:form>	
+					or <button id="registerBtn">Register</button>
+				</c:when>
+				<c:otherwise>
+					<span id="username">Hi, <h:outputText value="#{authenticationHandler.currentUser.name}" />!</span>
+					<h:form>
+						<h:commandButton id="logoutBtn" value="Logout" action="#{authenticationHandler.logout()}" />
+					</h:form>
+				</c:otherwise>
+			</c:choose>
+		</div>
+	</body>
+</html>
