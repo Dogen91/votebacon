@@ -1,283 +1,75 @@
-<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
-	<h:outputStylesheet name="css/main.css" />
-	<h:outputScript library="javascript" name="jquery-2.0.3.js" />
-	<h:outputScript library="javascript" name="js.js" />
+	
 	<ui:param name="link" value="#{votebacon.links[id]}" />
-	<title>#{link.title}</title>
 	
-	<style>
-		/**
-		 * Colors
-		 * Blue: #3a68e9
-		 */
-		
-		/**
-		 * General
-		 */
-		* {
-		font-family: Arial;
-		}
-		body {
-			margin: 0;
-			padding: 0;
-		}
-		button, input[type="submit"] {
-			background-color: #3a68e9;
-			color: #FFF;
-		}
-		
-		#addNewLink .submitBtn:disabled {
-			background-color: #C4C7CF;
-		}
-		
-		a {
-			color: #3a68e9;
-			text-decoration: none;
-		}
-		
-		a:hover {
-			text-decoration: underline;
-		}
-		
-		a img {
-			border: none;
-		}
-		
-		a:hover img {
-			text-decoration: none;
-		}
-		
-		.clear {
-			clear: both;
-		}
-		
-		.dropdownContainer {
-			background-color: #EEE;
-			padding: 10px;
-			border-bottom: 1px solid #AAA;
-			position: relative;
-			display: none;
-		}
-		
-		.dropdownContainer h2 {
-			margin-top: 0px;
-		}
-		
-		/**
-		 * Header
-		 */
-		#header {
-			height: 55px;
-			background-color: #DDD;
-			padding: 10px;
-		}
-		
-		#header h1, #header form {
-			display: inline;
-		}
-		
-		#leftHeader {
-			float: left;
-		}
-		
-		#rightHeader {
-			float: right;
-			margin-top:15px;
-		}
-		
-		#cancelSubmit,
-		#cancelRegister {
-			width: 30px;
-			height: 30px;
-			cursor: pointer;
-			cursor: hand;
-			-webkit-border-radius: 5px;
-			-moz-border-radius: 5px;
-			border-radius: 5px;
-			background-color: #DDD;
-			text-align: center;
-			line-height: 30px;
-			border: 1px solid #AAA;
-			position: absolute;
-			bottom: 10px;
-		}
-		
-		.subtitle {
-			float: right;
-			position: absolute;
-			margin: 0;
-		}
-		
-		/**
-		 * Form
-		 */
-		form .formRow {
-			margin: 3px 0px;
-		}
-		
-		form .formRow label {
-			display: inline-block;
-			width: 125px;
-			text-align: right;
-			margin-right: 3px;
-		}
-		
-		/**
-		 * Link overview
-		 */
-		.link {
-			clear: both;
-			border-bottom: 1px solid #AAA;
-			padding: 10px;
-		}
-		
-		.link h2 {
-			margin: 0px 0px 5px 0px;
-		}
-		
-		.link .votes {
-			float: left;
-			width: 50px;
-			margin-top: 10px;
-		}
-		
-		.link .linkInfo {
-			float: left;
-		}
-		
-		.link .votes span, .link .votes a {
-			display: block;
-			text-align:center;
-		}
-		
-		
-		/* stuff for detail.xhtml */
-		#addNewLinkBtn {
-			display: none;
-		}
-		#commentFormContainer {
-			width: 100%;
-			background-color: grey;
-		}
-		.comment {
-			margin-left: 30px;
-			border-bottom: 1px solid #DDD;
-			min-height: 41px;
-		}
-		.comment form {
-			float: left;
-			margin-right: 10px;
-			clear: left;
-			padding-top: 5px;
-		}
-		#commentForm {
-			padding: 10px 0 10px 0;
-			margin: 0px 0px 10px 0px;
-		}
-		#commentForm textarea {
-			vertical-align: top;
-		}
-		.comment .commentInfo,
-		.comment .commentContent {
-			margin: 0;
-		}
-		.comment .commentInfo {
-			font-size: 12px;
-		}
-		.comment .commentContent {
-			font-size: 14px;
-			padding: 5px;
-		}
-		.comment img {
-			width: 20px;
-			height: 18px;
-			margin-left: 5px;
-		}
-		.submitComment.ui-state-disabled {
-			background-color: #C4C7CF;
-		}
-	</style>
-</head>
-<body>
-	<div id="header">
-	    <ui:insert name="header">
-	    	<ui:include src="WEB-INF/templates/header.xhtml"/>
-	    </ui:insert>
-	</div>
-	
-	<f:metadata>
-	    <f:viewParam name="id" />
-	</f:metadata>
-	
-	<div class="link">
-		<div class="votes">
-			<h:form>
-				<f:ajax render="vote">
-					<h:commandLink action="#{votebacon.voteUp(status.index)}" >
-						<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
-					</h:commandLink>
-					<span><h:outputText value="#{link.effectiveVotes}" id="vote"/></span>
-					<h:commandLink action="#{votebacon.voteDown(status.index)}">
-						<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
-					</h:commandLink>
-				</f:ajax>
-			</h:form>
-		</div>
-		<div class="linkInfo">
-			<h:outputLink value="#{link.url}" target="_blank">
-				<h2>#{link.title}</h2>
-			</h:outputLink>
-			<p><h:outputText value="#{link.infoText}" /></p>
-			<h:outputText value="#{fn:length(link.comments)} Comments" />
-		</div>
-		<div class="clear" />
-	</div>
-	
-	<h2><h:outputText value="#{fn:length(link.comments)} Comments:" /></h2>
-	<div id="commentFormContainer">
-	<h:form id="commentForm" rendered="#{authenticationHandler.currentUser!=null}" >
-		<div class="formRow">
-			<h:outputLabel for="commentText">Comment:</h:outputLabel><h:inputTextarea cols="50" rows="7" id="commentText" value="#{comment.content}" />
-		</div>
-		<div class="formRow">
-			<label> </label>
-			<h:commandButton value="Post Comment" class="submitComment" action="#{link.addComment( comment, authenticationHandler.currentUser.name )}" />
-		</div>
-	</h:form>
-	</div>
-	<h:panelGroup id="comments">
-		<ui:repeat var="linkComment" value="#{link.comments}" varStatus="status" >
-			<div class="comment">
-				<h:form>
-					<f:ajax render="vote">
-						<h:commandLink action="#{votebacon.voteUpComment(link.id, status.index)}" >
-							<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
-						</h:commandLink>
-						<span><h:outputText value="#{linkComment.vote}" id="vote"/></span>
-						<h:commandLink action="#{votebacon.voteDownComment(link.id, status.index)}">
-							<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
-						</h:commandLink>
-					</f:ajax>
-				</h:form>
-				<p class="commentInfo"><h:outputText value="#{linkComment.infoText}" /></p>
-				<p class="commentContent"><h:outputText value="#{linkComment.content}" /></p>
+	<ui:composition template="/WEB-INF/templates/basic.xhtml">
+		<ui:define name="content">
+			<f:metadata>
+			    <f:viewParam name="id" />
+			</f:metadata>
+			
+			<div class="link">
+				<div class="votes">
+					<h:form>
+						<f:ajax render="vote">
+							<h:commandLink action="#{votebacon.voteUp(status.index)}" >
+								<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
+							</h:commandLink>
+							<span><h:outputText value="#{link.effectiveVotes}" id="vote"/></span>
+							<h:commandLink action="#{votebacon.voteDown(status.index)}">
+								<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
+							</h:commandLink>
+						</f:ajax>
+					</h:form>
+				</div>
+				<div class="linkInfo">
+					<h:outputLink value="#{link.url}" target="_blank">
+						<h2>#{link.title}</h2>
+					</h:outputLink>
+					<p><h:outputText value="#{link.infoText}" /></p>
+					<h:outputText value="#{fn:length(link.comments)} Comments" />
+				</div>
+				<div class="clear" />
 			</div>
-		</ui:repeat>
-	</h:panelGroup>
-	
-	<div id="footer">
-		<ui:insert name="footer">
-			<ui:include src="WEB-INF/templates/footer.xhtml"/>
-		</ui:insert>
-	</div>
-</body>
+			
+			<h2><h:outputText value="#{fn:length(link.comments)} Comments:" /></h2>
+			<div id="commentFormContainer">
+			<h:form id="commentForm" rendered="#{authenticationHandler.currentUser!=null}" >
+				<div class="formRow">
+					<h:outputLabel for="commentText">Comment:</h:outputLabel><h:inputTextarea cols="50" rows="7" id="commentText" value="#{comment.content}" />
+				</div>
+				<div class="formRow">
+					<label> </label>
+					<h:commandButton value="Post Comment" class="submitComment" action="#{link.addComment( comment, authenticationHandler.currentUser.name )}" />
+				</div>
+			</h:form>
+			</div>
+			<h:panelGroup id="comments">
+				<ui:repeat var="linkComment" value="#{link.comments}" varStatus="status" >
+					<div class="comment">
+						<h:form>
+							<f:ajax render="vote">
+								<h:commandLink action="#{votebacon.voteUpComment(link.id, status.index)}" >
+									<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
+								</h:commandLink>
+								<span><h:outputText value="#{linkComment.vote}" id="vote"/></span>
+								<h:commandLink action="#{votebacon.voteDownComment(link.id, status.index)}">
+									<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
+								</h:commandLink>
+							</f:ajax>
+						</h:form>
+						<p class="commentInfo"><h:outputText value="#{linkComment.infoText}" /></p>
+						<p class="commentContent"><h:outputText value="#{linkComment.content}" /></p>
+					</div>
+				</ui:repeat>
+			</h:panelGroup>
+		</ui:define>
+	</ui:composition>
 </html>

@@ -146,3 +146,48 @@ form .formRow label {
 	text-align:center;
 }
  
+/* Detail.xhtml */
+#addNewLinkBtn {
+	display: none;
+}
+#commentFormContainer {
+	width: 100%;
+	background-color: grey;
+}
+.comment {
+	margin-left: 30px;
+	border-bottom: 1px solid #DDD;
+	min-height: 41px;
+}
+.comment form {
+	float: left;
+	margin-right: 10px;
+	clear: left;
+	padding-top: 5px;
+}
+#commentForm {
+	padding: 10px 0 10px 0;
+	margin: 0px 0px 10px 0px;
+}
+#commentForm textarea {
+	vertical-align: top;
+}
+.comment .commentInfo,
+.comment .commentContent {
+	margin: 0;
+}
+.comment .commentInfo {
+	font-size: 12px;
+}
+.comment .commentContent {
+	font-size: 14px;
+	padding: 5px;
+}
+.comment img {
+	width: 20px;
+	height: 18px;
+	margin-left: 5px;
+}
+.submitComment.ui-state-disabled {
+	background-color: #C4C7CF;
+}
