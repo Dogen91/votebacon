@@ -75,7 +75,10 @@ a:hover img {
 #leftHeader {
 	float: left;
 }
-
+#leftHeader a {
+	color: black;
+	text-decoration: none;
+}
 #rightHeader {
 	float: right;
 	margin-top:15px;

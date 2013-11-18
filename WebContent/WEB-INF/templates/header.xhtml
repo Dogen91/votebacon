@@ -6,7 +6,9 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 	<body>
 		<div id="leftHeader">
-			<h1>Votebacon</h1>
+			<h:outputLink value="overview.xhtml">
+				<h1>Votebacon</h1>
+			</h:outputLink>
 			<p class="subtitle">...where voting for bacon is normal.</p>
 			<c:if test="#{not empty authenticationHandler.currentUser}">
 				<button id="addNewLinkBtn">Submit new link</button>
