@@ -148,7 +148,7 @@ form .formRow label {
  
 /* Detail.xhtml */
 #addNewLinkBtn {
-	display: none;
+	//display: none;
 }
 #commentFormContainer {
 	width: 100%;

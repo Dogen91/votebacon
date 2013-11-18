@@ -7,7 +7,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 
 @ManagedBean
-public class Link {
+public class Link implements Comparable<Link> {
 	private String title;
 	private String username;
 	private String url;
@@ -42,11 +42,11 @@ public class Link {
 	}
 	
 	// returns the "real score"
-	public int getScore() {
+	public double getScore() {
 		if ( this.getVotes() == 0 ) {
-			return 0;
+			return 0.0;
 		} else {
-			return this.getPosVotes() / this.getVotes();
+			return (double) this.getPosVotes() / (double) this.getVotes();
 		}
 	}
 	
@@ -109,6 +109,23 @@ public class Link {
 
 	public void setVotes(int votes) {
 		this.votes = votes;
+	}
+
+	@Override
+	public int compareTo( Link o ) {
+		if (o instanceof Link) {
+	        Link otherLink = (Link) o;
+	        if ( this.getScore() < otherLink.getScore() ) {
+	        	return -1;
+	        } else if ( this.getScore() > otherLink.getScore() ) {
+	        	return 1;
+	        } else {
+	        	return 0;
+	        }
+	        //return ( this.getScore() < otherLink.getScore() ? -1 : 1 );
+	    } else {
+	        return 0;
+	    }
 	}
 
 }

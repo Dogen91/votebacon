@@ -1,6 +1,7 @@
 package votebacon.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -81,5 +82,11 @@ public class Votebacon {
 
 	public void setLinks(List<Link> links) {
 		this.links = links;
+	}
+	
+	public List<Link> getSortedLinks() {
+		List<Link> list = this.getLinks();
+		Collections.sort( list );
+		return list;
 	}
 }
