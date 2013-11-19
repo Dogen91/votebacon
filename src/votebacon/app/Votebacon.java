@@ -1,11 +1,13 @@
 package votebacon.app;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 import votebacon.beans.Link;
 
@@ -14,11 +16,12 @@ import votebacon.beans.Link;
 public class Votebacon {
 	private List<Link> links = new ArrayList<Link>();
 
-	public void addNewLink(Link link, String username) {
+	public void addNewLink(Link link, String username) throws IOException {
 		link.setUsername(username);
-
-		this.links.add(0, link);
-		// TODO: user has to be forwarded to the detail view of the new link.
+		this.links.add(link);
+		Collections.sort(links);
+		
+		FacesContext.getCurrentInstance().getExternalContext().redirect("detail.xhtml?id=" + this.links.indexOf(link));		
 	}
 
 	public List<Link> getSortedLinks(){
