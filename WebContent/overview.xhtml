@@ -20,7 +20,7 @@
 						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" class="password" value="#{user.password}" />
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" class="confirmPassword" value="#{user.confirmPassword}" />
+						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" class="confirmPassword" value="#{user.confirmPassword}" title="Please confirm your password." />
 					</div>
 					<div class="formRow">
 						<label> </label>
@@ -28,8 +28,13 @@
 					</div>
 					<div id="cancelRegister">&#9587;</div>
 					<h:outputScript rendered="#{authenticationHandler.userExists}">
-					    alert('User exists already, please choose another name.');
+					   $(function() {
+					    $( "#userExistsDialog" ).dialog();
+					  });
 					</h:outputScript>
+					<div id="userExistsDialog" class="dialog" title="User already exists!">
+						<p>There is already a user with this name. Please choose another username.</p>
+					</div>
 				</h:form>
 			</div>
 		

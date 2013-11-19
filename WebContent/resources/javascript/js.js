@@ -72,6 +72,13 @@ $( document ).ready(function() {
 		}
 	});
 	
+	// Show tooltip when focus is lost on confirmPassword and the pwds don't match
+	$("#register .confirmPassword").focusout( function() {
+		if ( $("#register .password").val() != $(this).val() || $(this).val() == "" ) {
+			$(this).tooltip();
+		}
+	});
+	
 	//////////////////////////////////////////////////////////////
 	// Detail
 	//////////////////////////////////////////////////////////////

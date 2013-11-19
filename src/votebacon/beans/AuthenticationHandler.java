@@ -25,8 +25,6 @@ public class AuthenticationHandler {
 				// doesn't exist yet. add user and log them in.
 				AuthenticationHandler.users.add(user);
 				login(user);
-			} else {
-				// passwords don't match. Prompt a message!
 			}
 		} else {
 			// exists already, sorry.
@@ -59,11 +57,17 @@ public class AuthenticationHandler {
 	 * @author PCHR
 	 */
 	public boolean userExists( User user ) {
-		return AuthenticationHandler.users.indexOf(user) > -1;
+		for (User registeredUser : AuthenticationHandler.users ) {
+			if ( registeredUser.getName().equals( user.getName() ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void logout(){
 		this.currentUser = null;
+		userExists = false;
 	}
 
 	public User getCurrentUser() {
