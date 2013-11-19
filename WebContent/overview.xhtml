@@ -54,12 +54,12 @@
 						<div class="link">
 							<div class="votes">
 								<h:form>
-									<f:ajax render="vote">
-										<h:commandLink action="#{linkItem.voteUp(authenticationHandler.currentUser)}" >
+									<f:ajax update="vote">
+										<h:commandLink action="#{votebacon.voteUp(linkItem.id, authenticationHandler.currentUser)}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
 										<span><h:outputText value="#{linkItem.effectiveVotes}" id="vote"/></span>
-										<h:commandLink action="#{linkItem.voteDown(authenticationHandler.currentUser)}">
+										<h:commandLink action="#{votebacon.voteDown(linkItem.id, authenticationHandler.currentUser)}">
 											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>
 									</f:ajax>
@@ -68,6 +68,10 @@
 							<div class="linkInfo">
 								<h:outputLink value="#{linkItem.url}" target="_blank">
 									<h2>#{linkItem.title}</h2>
+									<h2>#{linkItem.score}</h2>
+									<h2>#{linkItem.votes}</h2>
+									<h2>#{linkItem.posVotes}</h2>
+									<h2>#{linkItem.effectiveVotes}</h2>
 								</h:outputLink>
 								<p><h:outputText value="#{linkItem.infoText}" /></p>
 								<h:outputLink value="detail.xhtml">

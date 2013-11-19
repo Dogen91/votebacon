@@ -11,6 +11,7 @@ public class Link extends VoteItem{
 	private String title;
 	private String username;
 	private String url;
+	private int id;
 
 	private Calendar created = Calendar.getInstance();
 
@@ -82,5 +83,13 @@ public class Link extends VoteItem{
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }
