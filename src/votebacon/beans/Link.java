@@ -19,6 +19,12 @@ public class Link implements Comparable<Link> {
 
 	private List<Comment> comments = new ArrayList<Comment>();
 	
+	/**
+	 * Returns infotext about this link.
+	 * 
+	 * @return String
+	 * @author PFORSTER
+	 */
 	public String getInfoText(){
 		String returnString = "submitted ";
 		Calendar currentCal = Calendar.getInstance();
@@ -41,7 +47,11 @@ public class Link implements Comparable<Link> {
 		this.comments.add( newComment );
 	}
 	
-	// returns the "real score"
+	/** 
+	 * returns the "real score"
+	 * @return double
+	 * @author PCHR
+	 */
 	public double getScore() {
 		if ( this.getVotes() == 0 ) {
 			return 0.0;
@@ -50,7 +60,11 @@ public class Link implements Comparable<Link> {
 		}
 	}
 	
-	// returns a simple positive-negative votes number
+	/**
+	 * returns a simple positive-negative votes number
+	 * @return int
+	 * @author PCHR
+	 */
 	public int getEffectiveVotes() {
 		return this.getPosVotes() - ( this.getVotes() - this.getPosVotes() );
 	}
@@ -111,6 +125,14 @@ public class Link implements Comparable<Link> {
 		this.votes = votes;
 	}
 
+	/**
+	 * Implement compareTo-Method to be able to sort the links.
+	 * 1st factor is the score. If the score is the same, look at the total amount of votes.
+	 * If they're still the same, prefer the newer link.
+	 * 
+	 * @param Link o Link to compare this link to.
+	 * @author PCHR
+	 */
 	@Override
 	public int compareTo( Link o ) {
 		if (o instanceof Link) {
@@ -120,9 +142,16 @@ public class Link implements Comparable<Link> {
 	        } else if ( this.getScore() > otherLink.getScore() ) {
 	        	return 1;
 	        } else {
-	        	return 0;
+	        	// if score is the same, prefer the one with the higher amount of votes
+	        	if ( this.getVotes() < otherLink.getVotes() ) {
+		        	return -1;
+		        } else if ( this.getVotes() > otherLink.getVotes() ) {
+		        	return 1;
+		        } else {
+		        	// if votes are the same, prefer the newer one.
+		        	return this.getCreated().compareTo( otherLink.getCreated() );
+		        }
 	        }
-	        //return ( this.getScore() < otherLink.getScore() ? -1 : 1 );
 	    } else {
 	        return 0;
 	    }
