@@ -58,7 +58,7 @@
 										<h:commandLink action="#{linkItem.voteUp()}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
-										<span><h:outputText value="#{linkItem.score}" id="vote"/></span>
+										<span><h:outputText value="#{linkItem.effectiveVotes}" id="vote"/></span>
 										<h:commandLink action="#{linkItem.voteDown()}">
 											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>
