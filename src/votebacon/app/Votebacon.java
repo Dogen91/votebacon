@@ -10,7 +10,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 
 import votebacon.beans.Link;
-import votebacon.beans.User;
 
 @ManagedBean
 @ApplicationScoped
@@ -22,6 +21,7 @@ public class Votebacon {
 		link.setUsername(username);
 		link.setId( this.getMaxLinkID() );
 		
+		// increment maxID for links
 		this.setMaxLinkID( this.getMaxLinkID()+1 );
 		this.links.add(link);
 		

@@ -15,7 +15,6 @@
 				<h:form id="registerForm" rendered="#{authenticationHandler.currentUser==null}" >
 					<div class="formRow">
 						<h:outputLabel for="username">Username</h:outputLabel><h:inputText id="username" value="#{user.name}" />
-						<!-- <h:message class="error" for="username" id="userAlreadyExistsError" /> -->
 					</div>
 					<div class="formRow">
 						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" class="password" value="#{user.password}" />
@@ -28,6 +27,9 @@
 						<h:commandButton value="Register" id="submitRegistration" class="submitRegistration" action="#{authenticationHandler.register(user)}" />
 					</div>
 					<div id="cancelRegister">&#9587;</div>
+					<h:outputScript rendered="#{authenticationHandler.userExists}">
+					    alert('User exists already, please choose another name.');
+					</h:outputScript>
 				</h:form>
 			</div>
 		
