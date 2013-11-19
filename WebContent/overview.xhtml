@@ -50,16 +50,16 @@
 			</div>
 			<div id="links">
 				<h:panelGroup id="linkGroup">
-					<ui:repeat var="linkItem" value="#{votebacon.links}" varStatus="status" >
+					<ui:repeat var="linkItem" value="#{votebacon.sortedLinks}" varStatus="status" >
 						<div class="link">
 							<div class="votes">
 								<h:form>
 									<f:ajax render="vote">
-										<h:commandLink action="#{votebacon.voteUp(status.index)}" >
+										<h:commandLink action="#{linkItem.voteUp(authenticationHandler.currentUser)}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
 										<span><h:outputText value="#{linkItem.effectiveVotes}" id="vote"/></span>
-										<h:commandLink action="#{votebacon.voteDown(status.index)}">
+										<h:commandLink action="#{linkItem.voteDown(authenticationHandler.currentUser)}">
 											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>
 									</f:ajax>

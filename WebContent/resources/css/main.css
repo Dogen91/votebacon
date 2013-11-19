@@ -75,7 +75,10 @@ a:hover img {
 #leftHeader {
 	float: left;
 }
-
+#leftHeader a {
+	color: black;
+	text-decoration: none;
+}
 #rightHeader {
 	float: right;
 	margin-top:15px;
@@ -147,9 +150,6 @@ form .formRow label {
 }
  
 /* Detail.xhtml */
-#addNewLinkBtn {
-	//display: none;
-}
 #commentFormContainer {
 	width: 100%;
 	background-color: grey;

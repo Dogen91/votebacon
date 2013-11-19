@@ -34,6 +34,11 @@ public class User {
 		this.confirmPassword = confirmPassword;
 	}
 
+	/**
+	 * Overrides hashCode method
+	 * @return int
+	 * @author PFORSTER
+	 */
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -44,6 +49,13 @@ public class User {
 		return result;
 	}
 
+	/**
+	 * Override equals method
+	 * 
+	 * @param Object obj
+	 * @return Boolean
+	 * @author PFORSTER
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
