@@ -19,11 +19,11 @@
 				<div class="votes">
 					<h:form>
 						<f:ajax render="vote">
-							<h:commandLink action="#{votebacon.voteUp(status.index)}" >
+							<h:commandLink action="#{link.voteUp()}" >
 								<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 							</h:commandLink>
-							<span><h:outputText value="#{link.effectiveVotes}" id="vote"/></span>
-							<h:commandLink action="#{votebacon.voteDown(status.index)}">
+							<span><h:outputText value="#{link.votes}" id="vote"/></span>
+							<h:commandLink action="#{link.voteDown()}">
 								<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 							</h:commandLink>
 						</f:ajax>
@@ -47,7 +47,7 @@
 				</div>
 				<div class="formRow">
 					<label> </label>
-					<h:commandButton value="Post Comment" class="submitComment" action="#{link.addComment( comment, authenticationHandler.currentUser.name )}" />
+					<h:commandButton value="Post Comment" class="submitComment" action="#{link.addComment(comment, authenticationHandler.currentUser.name)}" />
 				</div>
 			</h:form>
 			</div>
@@ -55,12 +55,12 @@
 				<ui:repeat var="linkComment" value="#{link.comments}" varStatus="status" >
 					<div class="comment">
 						<h:form>
-							<f:ajax render="vote">
-								<h:commandLink action="#{votebacon.voteUpComment(link.id, status.index)}" >
+							<f:ajax render="voteComment">
+								<h:commandLink action="#{linkComment.voteUp()}" >
 									<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 								</h:commandLink>
-								<span><h:outputText value="#{linkComment.vote}" id="vote"/></span>
-								<h:commandLink action="#{votebacon.voteDownComment(link.id, status.index)}">
+								<span><h:outputText value="#{linkComment.score}" id="voteComment"/></span>
+								<h:commandLink action="#{linkComment.voteDown()}">
 									<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 								</h:commandLink>
 							</f:ajax>

@@ -5,13 +5,12 @@ import java.util.Calendar;
 import javax.faces.bean.ManagedBean;
  
 @ManagedBean
-public class Comment {
+public class Comment extends VoteItem{
 	private String author;
 	private String content;
-	private int vote = 0;
 	
 	private Calendar created = Calendar.getInstance();
-
+	
 	public String getInfoText() {
 		String returnString = this.getAuthor() + " wrote ";
 		Calendar currentCal = Calendar.getInstance();
@@ -51,13 +50,5 @@ public class Comment {
 
 	public void setCreated(Calendar created) {
 		this.created = created;
-	}
-	
-	public int getVote() {
-		return vote;
-	}
-
-	public void setVote(int vote) {
-		this.vote = vote;
 	}
 }
