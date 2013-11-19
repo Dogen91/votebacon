@@ -13,6 +13,11 @@ public class AuthenticationHandler {
 	
 	private User currentUser;
 	
+	/**
+	 * Registers a new user after checking if it doesn't already exist and if the passwords match.
+	 * @param user
+	 * @author PFORSTER, PCHR
+	 */
 	public void register(User user){
 		if( !this.userExists( user ) ){
 			if ( user.getConfirmPassword().equals(user.getPassword()) ) {
@@ -31,7 +36,12 @@ public class AuthenticationHandler {
 		}
 	}
 	
-	// Let the user log in with his/her credentials if it exists.
+	/**
+	 * Let the user log in with his/her credentials if it exists.
+	 * @param user
+	 * @return Boolean
+	 * @author PFORSTER, PCHR
+	 */
 	public boolean login(User user){
 		if( this.userExists( user ) ){
 			this.currentUser = user;
@@ -40,6 +50,12 @@ public class AuthenticationHandler {
 		return false;
 	}
 	
+	/**
+	 * Checks if a user already exists.
+	 * @param user
+	 * @return Boolean
+	 * @author PCHR
+	 */
 	public boolean userExists( User user ) {
 		return AuthenticationHandler.users.indexOf(user) > -1;
 	}
