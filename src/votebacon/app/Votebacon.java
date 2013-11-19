@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
@@ -19,8 +18,6 @@ public class Votebacon {
 	private List<Link> links = new ArrayList<Link>();
 	private int maxLinkID;
 	
-	private static final Logger logger = Logger.getLogger( "Votebacon: " );
-
 	public void addNewLink(Link link, String username) throws IOException {
 		link.setUsername(username);
 		link.setId( this.getMaxLinkID() );
@@ -30,7 +27,6 @@ public class Votebacon {
 		
 		//Collections.sort(links);
 		
-		//FacesContext.getCurrentInstance().getExternalContext().redirect("detail.xhtml?id=" + this.links.indexOf(link));
 		FacesContext.getCurrentInstance().getExternalContext().redirect("detail.xhtml?id=" + link.getId() );
 	}
 	
@@ -44,7 +40,6 @@ public class Votebacon {
 	}
 	
 	public int voteUp( int linkID, User user ) {
-		logger.info("upvoted "+linkID);
 		if ( user != null ) {
 			return this.getLink( linkID ).voteUp( user );
 		} else {
@@ -53,7 +48,6 @@ public class Votebacon {
 	}
 	
 	public int voteDown( int linkID, User user ) {
-		logger.info("downvoted "+linkID);
 		if ( user != null ) {
 			return this.getLink( linkID ).voteDown( user );
 		} else {
