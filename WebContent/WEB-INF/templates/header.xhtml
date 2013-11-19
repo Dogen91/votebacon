@@ -27,7 +27,10 @@
 					or <button id="registerBtn">Register</button>
 				</c:when>
 				<c:otherwise>
-					<span id="username">Hi, <h:outputText value="#{authenticationHandler.currentUser.name}" />!</span>
+					<span id="username">
+						<h:outputText value="#{i18n['overview.welcome']}" />
+						<h:outputText value="#{authenticationHandler.currentUser.name}" />!
+					</span>
 					<h:form>
 						<h:commandButton id="logoutBtn" value="Logout" action="#{authenticationHandler.logout()}" />
 					</h:form>
