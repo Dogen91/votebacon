@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import votebacon.beans.AuthenticationHandler;
 import votebacon.beans.Comment;
 import votebacon.beans.Link;
+import votebacon.beans.User;
 
 @ManagedBean
 @ApplicationScoped
@@ -17,14 +18,16 @@ public class Votebacon {
 	private List<Link> links = new ArrayList<Link>();
 
 	public void addNewLink(Link link, String username){
-		link.setUsername(username);
-		
-		this.links.add(link);
-		// TODO: user has to be forwarded to the detail view of the new link.
+		if ( username != null && username != "" ) {
+			link.setUsername(username);
+			
+			this.links.add(link);
+			// TODO: user has to be forwarded to the detail view of the new link.
+		}
 	}
 	
-	public Integer voteUp(int id){
-		if(this.links.size() >= id){
+	public Integer voteUp(int id, User user){
+		if( user != null && this.links.size() >= id){
 			Link link = this.links.get(id);
 			
 			link.setVotes( link.getVotes() + 1 );
@@ -37,8 +40,8 @@ public class Votebacon {
 		}
 	}
 	
-	public Integer voteDown(int id){
-		if(this.links.size() >= id){
+	public Integer voteDown(int id, User user){
+		if( user != null && this.links.size() >= id){
 			Link link = this.links.get(id);
 			
 			link.setVotes( link.getVotes() + 1 );

@@ -150,9 +150,6 @@ form .formRow label {
 }
  
 /* Detail.xhtml */
-#addNewLinkBtn {
-	//display: none;
-}
 #commentFormContainer {
 	width: 100%;
 	background-color: grey;
