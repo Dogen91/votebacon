@@ -15,7 +15,7 @@ public class AuthenticationHandler {
 	
 	public void register(User user){
 		if( !this.userExists( user ) ){
-			if ( user.getPassword() == user.getConfirmPassword() ) {
+			if ( user.getConfirmPassword().equals(user.getPassword()) ) {
 				// doesn't exist yet. add user and log them in.
 				AuthenticationHandler.users.add(user);
 				login(user);
