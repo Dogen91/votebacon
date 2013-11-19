@@ -9,7 +9,7 @@
 			<h:outputLink value="overview.xhtml">
 				<h1>Votebacon</h1>
 			</h:outputLink>
-			<p class="subtitle">...where voting for bacon is normal.</p>
+			<p class="subtitle"><h:outputText value="#{i18n['header.subtitle']}" /></p>
 			<c:if test="#{not empty authenticationHandler.currentUser}">
 				<button id="addNewLinkBtn">Submit new link</button>
 			</c:if>
