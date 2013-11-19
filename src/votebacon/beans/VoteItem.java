@@ -7,16 +7,18 @@ public class VoteItem implements Comparable<VoteItem> {
 
 	// TODO pforster: what is the exact vote? score or effectiveVote?
 	
-	public int voteUp() {
-		this.votes++;
-		this.posVotes++;
-
+	public int voteUp( User user ) {
+		if ( user != null ) {
+			this.votes++;
+			this.posVotes++;
+		}
 		return getEffectiveVotes();
 	}
 
-	public int voteDown() {
-		this.votes++;
-
+	public int voteDown( User user ) {
+		if ( user != null ) {
+			this.votes++;
+		}
 		return getEffectiveVotes();
 	}
 

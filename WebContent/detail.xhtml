@@ -19,11 +19,11 @@
 				<div class="votes">
 					<h:form>
 						<f:ajax render="vote">
-							<h:commandLink action="#{link.voteUp()}" >
+							<h:commandLink action="#{link.voteUp(authenticationHandler.currentUser)}" >
 								<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 							</h:commandLink>
 							<span><h:outputText value="#{link.effectiveVotes}" id="vote"/></span>
-							<h:commandLink action="#{link.voteDown()}">
+							<h:commandLink action="#{link.voteDown(authenticationHandler.currentUser)}">
 								<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 							</h:commandLink>
 						</f:ajax>
@@ -56,11 +56,11 @@
 					<div class="comment">
 						<h:form>
 							<f:ajax render="voteComment">
-								<h:commandLink action="#{linkComment.voteUp()}" >
+								<h:commandLink action="#{linkComment.voteUp(authenticationHandler.currentUser)}" >
 									<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 								</h:commandLink>
 								<span><h:outputText value="#{linkComment.effectiveVotes}" id="voteComment"/></span>
-								<h:commandLink action="#{linkComment.voteDown()}">
+								<h:commandLink action="#{linkComment.voteDown(authenticationHandler.currentUser)}">
 									<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 								</h:commandLink>
 							</f:ajax>
