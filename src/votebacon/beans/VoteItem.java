@@ -5,8 +5,6 @@ public class VoteItem implements Comparable<VoteItem> {
 	private int votes = 0;
 	private int posVotes = 0;
 
-	// TODO pforster: what is the exact vote? score or effectiveVote?
-	
 	public int voteUp( User user ) {
 		if ( user != null ) {
 			this.votes++;
