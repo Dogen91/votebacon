@@ -56,13 +56,13 @@
 							<div class="votes">
 								<h:form>
 									<f:ajax render=":linkGroup">
-										<h:commandLink action="#{votebacon.voteUp(linkItem.id, authenticationHandler.currentUser)}" >
+										<h:commandLink action="#{linkItem.voteUp(authenticationHandler.currentUser)}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
 										<span>
 											<h:outputText value="#{linkItem.effectiveVotes}" id="vote"/>
 										</span>
-										<h:commandLink action="#{votebacon.voteDown(linkItem.id, authenticationHandler.currentUser)}">
+										<h:commandLink action="#{linkItem.voteDown(authenticationHandler.currentUser)}">
 											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>
 									</f:ajax>

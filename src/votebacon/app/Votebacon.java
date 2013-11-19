@@ -25,8 +25,7 @@ public class Votebacon {
 		this.setMaxLinkID( this.getMaxLinkID()+1 );
 		this.links.add(link);
 		
-		//Collections.sort(links);
-		
+		// Forward user to detail-site of new link
 		FacesContext.getCurrentInstance().getExternalContext().redirect("detail.xhtml?id=" + link.getId() );
 	}
 	
@@ -37,22 +36,6 @@ public class Votebacon {
 	        }
 		}
 		return null;
-	}
-	
-	public int voteUp( int linkID, User user ) {
-		if ( user != null ) {
-			return this.getLink( linkID ).voteUp( user );
-		} else {
-			return 0;
-		}
-	}
-	
-	public int voteDown( int linkID, User user ) {
-		if ( user != null ) {
-			return this.getLink( linkID ).voteDown( user );
-		} else {
-			return 0;
-		}
 	}
 
 	public List<Link> getSortedLinks(){
