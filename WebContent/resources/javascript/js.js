@@ -63,7 +63,7 @@ $( document ).ready(function() {
         return ( $emptyFields.length == 0 );
 	}
 	
-	// enable button again when all fields are filled and the passwords match. TODO: doesn't work with inputsecrets...
+	// enable button again when all fields are filled and the passwords match.
 	$( "#register input[type=password]" ).keyup( function() {
 		if( fieldsAreFilled( "register" ) && $("#register .password").val() == $("#register .confirmPassword").val() && $("#register .confirmPassword").val() != ""  ) {
 			$(".submitRegistration").removeAttr('disabled').removeClass( 'ui-state-disabled' );
