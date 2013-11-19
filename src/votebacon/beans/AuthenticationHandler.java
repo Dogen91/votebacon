@@ -15,9 +15,13 @@ public class AuthenticationHandler {
 	
 	public void register(User user){
 		if( !this.userExists( user ) ){
-			// doesn't exist yet. add user and log them in.
-			AuthenticationHandler.users.add(user);
-			login(user);
+			if ( user.getPassword() == user.getConfirmPassword() ) {
+				// doesn't exist yet. add user and log them in.
+				AuthenticationHandler.users.add(user);
+				login(user);
+			} else {
+				// passwords don't match. Prompt a message!
+			}
 		} else {
 			// exists already, sorry.
 			// TODO: prompt a message or something. The code below should work according to http://stackoverflow.com/a/319036
