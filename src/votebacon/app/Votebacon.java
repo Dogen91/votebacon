@@ -1,6 +1,7 @@
 package votebacon.app;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.faces.bean.ApplicationScoped;
@@ -20,6 +21,11 @@ public class Votebacon {
 		// TODO: user has to be forwarded to the detail view of the new link.
 	}
 
+	public List<Link> getSortedLinks(){
+		Collections.sort(links);
+		return this.links;
+	}
+	
 	public List<Link> getLinks() {
 		return links;
 	}
