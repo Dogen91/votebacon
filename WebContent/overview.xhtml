@@ -54,7 +54,7 @@
 						<div class="link">
 							<div class="votes">
 								<h:form>
-									<f:ajax update="vote">
+									<f:ajax render="vote">
 										<h:commandLink action="#{votebacon.voteUp(linkItem.id, authenticationHandler.currentUser)}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
