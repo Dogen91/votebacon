@@ -10,7 +10,7 @@ import javax.faces.bean.SessionScoped;
 @SessionScoped
 public class AuthenticationHandler {
 	private static List<User> users = new ArrayList<User>();
-	
+	private boolean userExists = false;
 	private User currentUser;
 	
 	/**
@@ -20,20 +20,20 @@ public class AuthenticationHandler {
 	 */
 	public void register(User user){
 		if( !this.userExists( user ) ){
+			userExists = false;
 			if ( user.getConfirmPassword().equals(user.getPassword()) ) {
 				// doesn't exist yet. add user and log them in.
 				AuthenticationHandler.users.add(user);
 				login(user);
-			} else {
-				// passwords don't match. Prompt a message!
 			}
 		} else {
 			// exists already, sorry.
-			// TODO: prompt a message or something. The code below should work according to http://stackoverflow.com/a/319036
-			// but doesn't. :(
-			//FacesContext.getCurrentInstance().addMessage("registerForm:userAlreadyExistsError", new FacesMessage("User already exists!"));
-			
+			userExists = true;
 		}
+	}
+	
+	public boolean getUserExists() {
+		return this.userExists;
 	}
 	
 	/**
@@ -57,11 +57,17 @@ public class AuthenticationHandler {
 	 * @author PCHR
 	 */
 	public boolean userExists( User user ) {
-		return AuthenticationHandler.users.indexOf(user) > -1;
+		for (User registeredUser : AuthenticationHandler.users ) {
+			if ( registeredUser.getName().equals( user.getName() ) ) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public void logout(){
 		this.currentUser = null;
+		userExists = false;
 	}
 
 	public User getCurrentUser() {

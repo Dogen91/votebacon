@@ -9,12 +9,12 @@
 	
 	
 	<ui:composition template="/WEB-INF/templates/basic.xhtml">
-		<ui:param name="link" value="#{votebacon.links[id]}" />
+		<f:metadata>
+		    <f:viewParam name="id" />
+		</f:metadata>
+		<ui:param name="link" value="#{votebacon.getLink(id)}" />
+		
 		<ui:define name="content">
-			<f:metadata>
-			    <f:viewParam name="id" />
-			</f:metadata>
-			
 			<div class="link">
 				<div class="votes">
 					<h:form>
@@ -55,7 +55,7 @@
 				<ui:repeat var="linkComment" value="#{link.comments}" varStatus="status" >
 					<div class="comment">
 						<h:form>
-							<f:ajax render="voteComment">
+							<f:ajax render="voteComment" update="voteComment">
 								<h:commandLink action="#{linkComment.voteUp(authenticationHandler.currentUser)}" >
 									<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 								</h:commandLink>

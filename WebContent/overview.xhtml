@@ -8,25 +8,33 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 	<ui:composition template="/WEB-INF/templates/basic.xhtml">
+		<h:outputScript name="ajaxFix.js" target="head" />
 		<ui:define name="content">
 			<div id="register" class="dropdownContainer">
 				<h2>Create a new User-Account</h2>
 				<h:form id="registerForm" rendered="#{authenticationHandler.currentUser==null}" >
 					<div class="formRow">
 						<h:outputLabel for="username">Username</h:outputLabel><h:inputText id="username" value="#{user.name}" />
-						<!-- <h:message class="error" for="username" id="userAlreadyExistsError" /> -->
 					</div>
 					<div class="formRow">
 						<h:outputLabel for="password">Password</h:outputLabel><h:inputSecret id="password" class="password" value="#{user.password}" />
 					</div>
 					<div class="formRow">
-						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" class="confirmPassword" value="#{user.confirmPassword}" />
+						<h:outputLabel for="confirmPassword">Confirm Password</h:outputLabel><h:inputSecret id="confirmPassword" class="confirmPassword" value="#{user.confirmPassword}" title="Please confirm your password." />
 					</div>
 					<div class="formRow">
 						<label> </label>
 						<h:commandButton value="Register" id="submitRegistration" class="submitRegistration" action="#{authenticationHandler.register(user)}" />
 					</div>
 					<div id="cancelRegister">&#9587;</div>
+					<h:outputScript rendered="#{authenticationHandler.userExists}">
+					   $(function() {
+					    $( "#userExistsDialog" ).dialog();
+					  });
+					</h:outputScript>
+					<div id="userExistsDialog" class="dialog" title="User already exists!">
+						<p>There is already a user with this name. Please choose another username.</p>
+					</div>
 				</h:form>
 			</div>
 		
@@ -54,11 +62,13 @@
 						<div class="link">
 							<div class="votes">
 								<h:form>
-									<f:ajax render="vote">
+									<f:ajax render=":linkGroup">
 										<h:commandLink action="#{linkItem.voteUp(authenticationHandler.currentUser)}" >
 											<h:graphicImage name="img/arrow_up.png" alt="Upvote" width="40"/>
 										</h:commandLink>
-										<span><h:outputText value="#{linkItem.effectiveVotes}" id="vote"/></span>
+										<span>
+											<h:outputText value="#{linkItem.effectiveVotes}" id="vote"/>
+										</span>
 										<h:commandLink action="#{linkItem.voteDown(authenticationHandler.currentUser)}">
 											<h:graphicImage name="img/arrow_down.png" alt="Downvote" width="40"/>
 										</h:commandLink>
@@ -72,7 +82,7 @@
 								<p><h:outputText value="#{linkItem.infoText}" /></p>
 								<h:outputLink value="detail.xhtml">
 									<h:outputText value="#{fn:length(linkItem.comments)} Comments" />
-									<f:param name="id" value="#{status.index}" />
+									<f:param name="id" value="#{linkItem.id}" />
 								</h:outputLink>
 							</div>
 							<div class="clear" />

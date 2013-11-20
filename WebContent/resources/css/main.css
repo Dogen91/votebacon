@@ -107,6 +107,10 @@ a:hover img {
 	margin: 0;
 }
 
+.dialog {
+	display: none;
+}
+
 /**
  * Form
  */

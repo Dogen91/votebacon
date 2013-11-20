@@ -63,12 +63,19 @@ $( document ).ready(function() {
         return ( $emptyFields.length == 0 );
 	}
 	
-	// enable button again when all fields are filled and the passwords match. TODO: doesn't work with inputsecrets...
+	// enable button again when all fields are filled and the passwords match.
 	$( "#register input[type=password]" ).keyup( function() {
 		if( fieldsAreFilled( "register" ) && $("#register .password").val() == $("#register .confirmPassword").val() && $("#register .confirmPassword").val() != ""  ) {
 			$(".submitRegistration").removeAttr('disabled').removeClass( 'ui-state-disabled' );
 		} else {
 			$(".submitRegistration").attr('disabled', 'disabled' ).addClass( 'ui-state-disabled' );
+		}
+	});
+	
+	// Show tooltip when focus is lost on confirmPassword and the pwds don't match
+	$("#register .confirmPassword").focusout( function() {
+		if ( $("#register .password").val() != $(this).val() || $(this).val() == "" ) {
+			$(this).tooltip();
 		}
 	});
 	

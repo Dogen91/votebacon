@@ -71,18 +71,11 @@ public class VoteItem implements Comparable<VoteItem> {
 		if ( o instanceof VoteItem ) {
 	        VoteItem otherVoteItem = (VoteItem) o;
 	        if ( this.getScore() < otherVoteItem.getScore() ) {
-	        	return -1;
-	        } else if ( this.getScore() > otherVoteItem.getScore() ) {
 	        	return 1;
+	        } else if ( this.getScore() > otherVoteItem.getScore() ) {
+	        	return -1;
 	        } else {
-	        	// if scores are the same, prefer the one with the higher amount of votes
-	        	if ( this.getVotes() < otherVoteItem.getVotes() ) {
-		        	return 1;
-		        } else if ( this.getVotes() > otherVoteItem.getVotes() ) {
-		        	return -1;
-		        } else {
-		        	return 0;
-		        }
+	        	return 0;
 	        }
 	    } else {
 	        return 0;
